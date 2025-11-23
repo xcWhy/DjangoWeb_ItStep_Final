@@ -23,6 +23,10 @@ class Room(models.Model):
     update = models.DateTimeField(auto_now=True) # takse a snapshot everytime we save
     created = models.DateTimeField(auto_now_add=True) # takse a snapshot only when we created this
 
+    class Meta:
+        ordering = ['-update', '-created'] 
+
+
     def __str__(self):
         return self.name
 
