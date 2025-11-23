@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+db.sqlite3
+media/
+staticfiles/
+
+# Environment variables / secrets
+.env
+.env.*
+*.env
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Migrations (optional to ignore)
+# Uncomment below to ignore migration files
+# */migrations/*
+# !*/migrations/__init__.py
+
+# Node (if using frontend tools)
+node_modules/
