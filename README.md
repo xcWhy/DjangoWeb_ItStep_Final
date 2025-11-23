@@ -1,1 +1,1 @@
-Read Me file
+My final project in ItStep based on creating a website for recipes using Python and its backend framework Django!
