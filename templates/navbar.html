@@ -1,10 +1,18 @@
-<a href="/">
+
+<style>
+    #logo{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+</style>
+
+<a href="/" id="logo">
     <h1>LOGO</h1>
 
 </a>
-
-<form method="GET" action="{% url 'home' %}">
-    <input type="text" name="q" placeholder="Search Rooms..." />
-</form>
 
 <hr>
