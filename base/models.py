@@ -20,6 +20,7 @@ class Room(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True) # ne e nujno da ima neshto vytre za da raboti
     # participants =
+    image = models.ImageField(upload_to='recipe_images/', null=True, blank=True)
     update = models.DateTimeField(auto_now=True) # takse a snapshot everytime we save
     created = models.DateTimeField(auto_now_add=True) # takse a snapshot only when we created this
 

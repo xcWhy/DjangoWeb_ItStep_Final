@@ -73,6 +73,7 @@ def home(request): #request is http object, what ckind of tada request is sendin
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     rooms = Room.objects.filter(Q(topic__name__icontains=q) |
                                 Q(name__icontains=q) |
+                                Q(host__username__icontains=q) |
                                 Q(description__icontains=q)) # kakvo containva v searcha
 
     topics = Topic.objects.all() #taka dostypvame db-to s queryta
@@ -93,7 +94,7 @@ def createRoom(request):
     form = RoomForm()
 
     if request.method == 'POST':
-        form = RoomForm(request.POST)
+        form = RoomForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('home')
