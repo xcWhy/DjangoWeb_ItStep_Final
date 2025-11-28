@@ -8,12 +8,23 @@
 
 {% block content %}
 
+<style>
+    h2{
+        font-family: 'Pixelify Sans', sans-serif;
+    }
+
+    .box{
+        border: black 1px solid;
+        font-family: 'Space Mono', monospace;
+    }
+
+</style>
 
 <div class="home-container">
 
     <!-- LEFT COLUMN -->
     <div class="box">
-        <h3>Browse Topics</h3>
+        <h2>Browse Topics</h2>
         <hr style="width: 80%;">
 
         <!-- ALL topics -->
@@ -32,11 +43,16 @@
 
     <!-- MIDDLE COLUMN -->
     <div class="box">
-        <h3>{{ room_count }} rooms available</h3>
 
+        <h2>What ya eatin today??</h2>
+    
+
+        <!-- <i>*search by name, host and desc*</i> -->
         <form method="GET" action="{% url 'home' %}" class="search-bar">
-            <input type="text" name="q" placeholder="Search Rooms..." />
+            <input type="text" name="q" placeholder="Search these recipes... by name, host or desc" />
         </form>
+
+        <hr>
 
         <div class="rooms-container">
             {% for room in rooms %}
@@ -53,7 +69,7 @@
                 </div>
 
                 <div class="room-body">
-                    <h5>{{ room.id }} — <a href="{% url 'room' room.id %}">{{ room.name }}</a></h5>
+                    <h5><a href="{% url 'room' room.id %}">{{ room.name }}</a></h5>
                 </div>
 
                 {% if room.image %}
@@ -72,20 +88,18 @@
 
     <!-- RIGHT COLUMN -->
     <div class="box">
-        <h3>Profile</h3>
+        <h2>Profile</h2>
         <hr style="width: 80%;">
         <h1>Hello, {{ request.user }}!</h1>
-        <h4><i>What we cookin today??</i></h4>
-
-        <a href="{% url 'create-room' %}" class="button">Create room</a>
-
-        <hr>
+        
 
         {% if request.user.is_authenticated %}
-        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'create-room' %}" class="button">Add recipe</a>
+        <hr>
+        <a href="{% url 'logout' %}" class="delete-btn">Logout</a>
 
         {% else %}
-        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'login' %}" class="edit-btn">Login</a>
 
         {% endif %}
 
