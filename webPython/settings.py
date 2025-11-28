@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'base.apps.BaseConfig', #tova go dobavqme kogato iskame da kajem i svyrjem novoto prilojenie (base) sys servera
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

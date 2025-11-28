@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from .models import Room, Topic
+from .models import Room, Topic, Ingredient
 from .forms import RoomForm
 
 # Create your views here.
@@ -75,11 +75,22 @@ def home(request): #request is http object, what ckind of tada request is sendin
                                 Q(name__icontains=q) |
                                 Q(host__username__icontains=q) |
                                 Q(description__icontains=q)) # kakvo containva v searcha
+    
+    ingredients_filter = request.GET.getlist('ingredients')
+    ingredients = Ingredient.objects.all()
+
+    if ingredients_filter:
+        recipes = Room.objects.all()
+        for ing in ingredients_filter:
+            ingredient_obj = Ingredient.objects.get(id=ing)
+            recipes = recipes.filter(ingredients__icontains=ingredient_obj.name)
+    else:
+        recipes = Room.objects.all()
 
     topics = Topic.objects.all() #taka dostypvame db-to s queryta
     room_count = rooms.count() #gets the lenght of a query
 
-    context = {'rooms': rooms, 'topics': topics, 'room_count': room_count}
+    context = {'rooms': rooms, 'topics': topics, 'room_count': room_count, 'ingredients': ingredients, 'selected_ingredients': [int(i) for i in ingredients_filter] }
     return render(request, 'base/home.html', context)
 
 
@@ -96,8 +107,12 @@ def createRoom(request):
     if request.method == 'POST':
         form = RoomForm(request.POST, request.FILES)
         if form.is_valid():
+            form = form.save(commit=False)
+            form.host = request.user
             form.save()
             return redirect('home')
+        else:
+            print(form.errors)
 
     context = {'form': form}
     return render(request, 'base/room_form.html', context)
@@ -112,7 +127,7 @@ def updateRoom(request, pk):
         return HttpResponse('You are not allowed here!!')
 
     if request.method == 'POST':
-        form = RoomForm(request.POST, instance=room) #this is replacing a room, not creating a nrew one
+        form = RoomForm(request.POST, request.FILES, instance=room) #this is replacing a room, not creating a nrew one
         if form.is_valid():
             form.save()
             return redirect('home')

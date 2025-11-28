@@ -1,10 +1,57 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block styles %}
+<style>
+    .room-wrapper {
+        max-width: 750px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .room-title {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #244673;
+        margin-bottom: 25px;
+    }
+
+    .room-image {
+        width: 90%;
+        max-width: 500px;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        margin-bottom: 25px;
+    }
+
+    .room-description {
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: #333;
+        margin-top: 10px;
+        padding: 0 20px;
+    }
+</style>
+{% endblock styles %}
 
 {% block content %}
-<h1>{{room.name}}</h1>
 
-<h3>{{room.description}}</h3>
+<div class="room-wrapper">
 
-{{room.image}}
+    <h1 class="room-title">{{ room.name }}</h1>
+
+    {% if room.image %}
+        <img src="{{ room.image.url }}" alt="recipe image" class="room-image">
+    {% endif %}
+
+    <p class="room-description">{{ room.description }}</p>
+
+</div>
 
 {% endblock content %}
