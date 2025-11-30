@@ -37,6 +37,15 @@
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
         /* border: black 1px solid; */
         position: relative;
+
+        transition: all 0.2s ease;
+    }
+
+    .room-container:hover {
+        /* background: #e6f2ff; */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        transform: translateY(-5px);
+        color: #244673;
     }
 
     .topic-container a {
@@ -156,15 +165,15 @@
 
 
     /* --- ROOM NAME IN CENTER --- */
-    .room-body {
-        text-align: center;
-        margin: 20px;
-        color: black;
+    .room-body h3 a {
+        text-decoration: none; /* remove underline */
+        color: black;          /* make text black */
+        font-weight: 600;
+        transition: color 0.2s ease;
     }
 
-    .room-body h5 {
-        margin: 0;
-        font-size: 18px;
+    .room-body h3 a:hover {
+        color: #2d6ebd;        /* optional hover color */
     }
 
 
