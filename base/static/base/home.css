@@ -6,19 +6,7 @@
     }
 
     /* ---------- SHARED BOX STYLE ---------- */
-    .box {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-        /* border: #b3cfe7 2px solid; */
-        border-radius: 10px;
-        background: #d7ecff8e;
-        margin: 10px;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    }
+
 
     /* ---------- TOPIC AND ROOM BOXES ---------- */
     .ingredient-container {
@@ -38,7 +26,7 @@
         width: 300px;
         min-height: 180px;
 
-        background: #d7ecff;
+        background: rgb(255, 255, 255);
         border-radius: 12px;
         padding: 15px;
 
@@ -46,13 +34,30 @@
         flex-direction: column;
         justify-content: space-between;
 
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        /* border: black 1px solid; */
         position: relative;
     }
 
-    .topic-container{
-        width: 200px;
-        
+    .topic-container a {
+        display: inline-block;
+        padding: 10px 16px;
+        background: #ffffff;
+        color: #000; /* 🔥 makes text black */
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none; /* 🔥 removes underline */
+        border: 1px solid #d0e7ff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease;
+    }
+
+    /* Hover effect */
+    .topic-container a:hover {
+        background: #e6f2ff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
+        color: #244673; /* optional: change color on hover */
     }
 
     /* ---------- ROOMS LAYOUT ---------- */
@@ -153,7 +158,8 @@
     /* --- ROOM NAME IN CENTER --- */
     .room-body {
         text-align: center;
-        margin: 10px 0;
+        margin: 20px;
+        color: black;
     }
 
     .room-body h5 {
@@ -167,6 +173,7 @@
     .room-footer {
         display: flex;
         justify-content: center;
+        margin: 10px;
     }
 
     .topic-tag {
