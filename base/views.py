@@ -11,12 +11,6 @@ from .forms import RoomForm
 
 # Create your views here.
 
-# rooms =[
-#     {'id':1, 'name':'Lets learn python!'},
-#     {'id':2, 'name':'Design with me!'},
-#     {'id':3, 'name':'Yippe room!'},
-# ]
-
 def loginPage(request):
 
     page = 'login'
@@ -57,7 +51,7 @@ def registerPage(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False) # we want to be able to access the user right away
+            user = form.save(commit=False) # we want to be able to access the user right away but to not send it to the db right away
             #we want to clean up the data
             user.username = user.username.lower()
             user.save()
@@ -74,7 +68,7 @@ def home(request): #request is http object, what ckind of tada request is sendin
     rooms = Room.objects.filter(Q(topic__name__icontains=q) |
                                 Q(name__icontains=q) |
                                 Q(host__username__icontains=q) |
-                                Q(description__icontains=q)) # kakvo containva v searcha
+                                Q(description__icontains=q)) # not case sensitive search
     
     ingredients_filter = request.GET.getlist('ingredients')
     ingredients = Ingredient.objects.all()
@@ -87,7 +81,7 @@ def home(request): #request is http object, what ckind of tada request is sendin
     else:
         recipes = Room.objects.all()
 
-    topics = Topic.objects.all() #taka dostypvame db-to s queryta
+    topics = Topic.objects.all() #queryta kym db-to
     room_count = rooms.count() #gets the lenght of a query
 
     context = {'rooms': rooms, 'topics': topics, 'room_count': room_count, 'ingredients': ingredients, 'selected_ingredients': [int(i) for i in ingredients_filter] }
@@ -130,7 +124,7 @@ def updateRoom(request, pk):
         return HttpResponse('You are not allowed here!!')
 
     if request.method == 'POST':
-        form = RoomForm(request.POST, request.FILES, instance=room) #this is replacing a room, not creating a nrew one
+        form = RoomForm(request.POST, request.FILES, instance=room) #this is replacing a room, not creating a new one
         if form.is_valid():
             form.save()
             return redirect('home')
