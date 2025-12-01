@@ -96,8 +96,11 @@ def home(request): #request is http object, what ckind of tada request is sendin
 
 def room(request, pk): #pk = primary key
 
-    room = Room.objects.get(id=pk)        
-    context = {'room': room}
+    room = Room.objects.get(id=pk)     
+    ingredients = Ingredient.objects.all()   
+    context = {'room': room, 'ingredients': ingredients}
+    
+
     return render(request, 'base/room.html', context)
 
 @login_required(login_url='login')
@@ -105,17 +108,17 @@ def createRoom(request):
     form = RoomForm()
 
     if request.method == 'POST':
+        print("POST RECEIVED")  # DEBUG LINE
         form = RoomForm(request.POST, request.FILES)
         if form.is_valid():
-            form = form.save(commit=False)
-            form.host = request.user
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
             return redirect('home')
         else:
-            print(form.errors)
+            print("FORM ERRORS:", form.errors)
 
-    context = {'form': form}
-    return render(request, 'base/room_form.html', context)
+    return render(request, 'base/room_form.html', {'form': form})
 
 
 @login_required(login_url='login')

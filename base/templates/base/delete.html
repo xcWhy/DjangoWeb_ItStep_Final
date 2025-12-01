@@ -14,11 +14,19 @@
         background: #e6f2ff;
         padding: 30px;
         border-radius: 14px;
-        border: 1px solid #cfe5ff;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border: 1px solid #000000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         text-align: center;
 
         font-family: 'Space Mono', monospace;
+        transition: all 0.2s ease;
+    }
+
+    .delete-wrapper:hover {
+        /* background: #e6f2ff; */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        transform: translateY(-5px);
+        color: #244673;
     }
 
     .delete-wrapper p {

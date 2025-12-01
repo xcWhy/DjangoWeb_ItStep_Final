@@ -16,6 +16,18 @@
     .box{
         border: black 1px solid;
         font-family: 'Space Mono', monospace;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        /* border: #b3cfe7 2px solid; */
+        border-radius: 10px;
+        background: #d7ecff8e;
+        margin: 10px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
     }
 
 </style>
@@ -63,13 +75,13 @@
                     {% if request.user == room.host %}
                     <div class="room-actions">
                         <a href="{% url 'update-room' room.id %}" class="edit-btn">Edit</a>
-                        <a href="{% url 'delete-room' room.id %}" class="delete-btn">Delete</a>
+                        <a href="{% url 'delete-room' room.id %}" class="delete-btn">X</a>
                     </div>
                     {% endif %}
                 </div>
 
                 <div class="room-body">
-                    <h5><a href="{% url 'room' room.id %}">{{ room.name }}</a></h5>
+                    <h3><a href="{% url 'room' room.id %}">{{ room.name }}</a></h3>
                 </div>
 
                 {% if room.image %}

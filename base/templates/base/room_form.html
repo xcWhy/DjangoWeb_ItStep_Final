@@ -10,6 +10,7 @@
         justify-content: center;
         align-items: center;
         padding: 30px 0;
+        font-family: 'Space Mono', monospace;
     }
 
     /* Form card style */
@@ -66,12 +67,32 @@
         transition: background 0.2s ease;
     }
 
-    #back-btn{
-        width: 50%;
+    .back-btn {
+        background: #e05c5c;
+        color: white;
+        display: inline-block;
+        padding: 10px 18px;
+        margin: 5px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        width: 20%;
+    }
+    .back-btn:hover {
+        background: #b9d7ff;
     }
 
     .submit-btn:hover {
         background: #2d6ebd;
+    }
+
+    h1 {
+        text-align: center;
+        width: 100%;
+        font-family: 'Pixelify Sans', sans-serif;
     }
 
 </style>
@@ -80,11 +101,11 @@
 
 <div class="form-wrapper">
     
-    <form method="POST" action="" class="styled-form">
+    <form method="POST" action="" class="styled-form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="submit-btn">Create</button>
-        <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+        <a href="{{request.META.HTTP_REFERER}}" class="back-btn">Go back</a>
     </form>
     
 </div>
