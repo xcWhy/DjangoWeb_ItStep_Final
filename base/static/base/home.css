@@ -5,9 +5,6 @@
         gap: 20px;
     }
 
-    /* ---------- SHARED BOX STYLE ---------- */
-
-
     /* ---------- TOPIC AND ROOM BOXES ---------- */
     .ingredient-container {
         display: flex;
@@ -18,7 +15,7 @@
 
         padding: 15px;
         border-radius: 8px;
-        background: #d7ecff; /* light blue tint */
+        background: #d7ecff; 
         /* border: 1px solid #d0e7ff; */
     }
 
@@ -52,16 +49,15 @@
         display: inline-block;
         padding: 10px 16px;
         background: #ffffff;
-        color: #000; /* 🔥 makes text black */
+        color: #000; 
         border-radius: 8px;
         font-weight: 600;
-        text-decoration: none; /* 🔥 removes underline */
+        text-decoration: none;
         border: 1px solid #d0e7ff;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
         transition: all 0.2s ease;
     }
 
-    /* Hover effect */
     .topic-container a:hover {
         background: #e6f2ff;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
@@ -79,16 +75,6 @@
     }
 
     /* ---------- BUTTON ---------- */
-    .button {
-        display: inline-block;
-        padding: 10px 20px;
-        background: #4a90e2;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-        cursor: pointer;
-    }
 
     .search-bar {
         width: 60%;
@@ -111,10 +97,6 @@
         border-color: #2d6ebd;
         box-shadow: 0px 0px 5px rgba(45, 110, 189, 0.4);
     }
-
-    /* ROOM CARD */
-
-
 
 
 /* --- HEADER: HOST (left) + ACTION BUTTONS (right) --- */
@@ -144,6 +126,7 @@
         border-radius: 6px;
         text-decoration: none;
         color: white;
+        transition: all 0.2s ease;
     }
 
     .edit-btn {
@@ -166,17 +149,15 @@
 
     /* --- ROOM NAME IN CENTER --- */
     .room-body h3 a {
-        text-decoration: none; /* remove underline */
-        color: black;          /* make text black */
+        text-decoration: none;
+        color: black;          
         font-weight: 600;
         transition: color 0.2s ease;
     }
 
     .room-body h3 a:hover {
-        color: #2d6ebd;        /* optional hover color */
+        color: #2d6ebd;        
     }
-
-
 
     /* --- TOPIC TAG AT BOTTOM --- */
     .room-footer {
@@ -199,7 +180,28 @@
         height: 180px;
         object-fit: cover;
         border-radius: 10px;
-        /* padding: 10px; */
-        /* margin: 10px; */
+    }
+
+    .add-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background: #4a90e2;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.25s ease, 
+                    box-shadow 0.25s ease, 
+                    transform 0.25s ease, 
+                    color 0.25s ease;
+    }
+
+    /* Hover effect */
+    .add-btn:hover {
+        background: #2d6ebd;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        transform: translateY(-4px);
+        color: #ffffff;
     }
 

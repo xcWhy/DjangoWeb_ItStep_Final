@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-#w are going to be working with cclases as tables in the db
-#when we make a new model fo the db we need to migrate - to build a migration
+
+# when we make a new model for the db we need to migrate - to build a migration
 # makemigrations -> migrate
 
 
@@ -42,13 +42,13 @@ class Room(models.Model):
     def __str__(self):
         return self.name
 
-# 1 to many db
+# 1 to many db - for future work
 class Message(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE) # fi the room is deleted all of the children i nthat room will be deleted too
+    room = models.ForeignKey(Room, on_delete=models.CASCADE) # if the room is deleted all of the children in that room will be deleted too
     body = models.TextField()
-    update = models.DateTimeField(auto_now=True) # takse a snapshot everytime we save
-    created = models.DateTimeField(auto_now_add=True) # takse a snapshot only when we created this
+    update = models.DateTimeField(auto_now=True) # takes a snapshot everytime we save
+    created = models.DateTimeField(auto_now_add=True) # takes a snapshot only when we created this
 
     def __str__(self):
-        return self.body[0:50] #w return the first 50 elements
+        return self.body[0:50] #we return the first 50 elements
