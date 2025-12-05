@@ -7,18 +7,21 @@
 <link rel="stylesheet" href="{% static 'base/room_form.css' %}">
 {% endblock styles %}
 
-
-<h1>Add a new recipe!</h1>
+<h1>Add a new recipe, {{ request.user }}!</h1>
 
 <div class="form-wrapper">
-    
     <form method="POST" action="" class="styled-form" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="submit-btn">Create</button>
-        <a href="{{request.META.HTTP_REFERER}}" class="back-btn">Go back</a>
+        <div class="form-grid">
+            {{ form.as_p }}
+        </div>
+
+        <div class="button-row">
+            <button type="submit" class="submit-btn"><b>Create</b></button>
+            <a href="{{request.META.HTTP_REFERER}}" class="back-btn">Go back</a>
+        </div>
+
     </form>
-    
 </div>
 
 {% endblock content %}
