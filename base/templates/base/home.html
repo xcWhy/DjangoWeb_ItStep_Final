@@ -107,7 +107,7 @@
         
 
         {% if request.user.is_authenticated %}
-        <a href="{% url 'create-room' %}" class="button">Add recipe</a>
+        <a href="{% url 'create-room' %}" class="add-btn">Add recipe</a>
         <hr>
         <a href="{% url 'logout' %}" class="delete-btn">Logout</a>
 
@@ -121,3 +121,12 @@
 </div>
 
 {% endblock content %}
+
+<!-- 
+FUTURE:
+
+- users to be able to add keywords to the searchbar (ex. Eggs and hit enter for the 
+keyword to become separete of what you are searching for) 
+
+
+-->
